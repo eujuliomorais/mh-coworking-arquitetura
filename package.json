@@ -11,20 +11,23 @@
     "url": "git+https://github.com/alvesmaarcos/mh-coworking-mobile.git"
   },
   "type": "module",
-  "main": "src/app/server.js",
   "scripts": {
-    "start": "node src/app/server.js",
-    "dev": "nodemon src/app/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run dev --workspace @mh-coworking/backend",
+    "build": "npm run build --workspace @mh-coworking/backend",
+    "typecheck": "npm run typecheck --workspace @mh-coworking/backend",
+    "start": "npm run start --workspace @mh-coworking/backend",
+    "test": "npm run test --workspace @mh-coworking/backend",
+    "dev:mobile": "npm run start --workspace @mh-coworking/frontend",
+    "typecheck:mobile": "npm run typecheck --workspace @mh-coworking/frontend",
+    "test:mobile": "npm run test --workspace @mh-coworking/frontend",
+    "build:mobile": "npm run export --workspace @mh-coworking/frontend"
   },
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "better-sqlite3": "^13.0.3",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "swagger-ui-express": "^5.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": "^22.13.0 || ^24.3.0 || >=26.0.0"
   }
 }
